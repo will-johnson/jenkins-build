@@ -26,9 +26,7 @@
 aspectjrt和aspectjweaver是与aspectj相关的包,用来支持切面编程的；
 aspectjrt包是aspectj的runtime包；
 aspectjweaver是aspectj的织入包；
-
 引入了AOP依赖后，默认已经增加了@EnableAspectJAutoProxy。
-
 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

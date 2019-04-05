@@ -19,6 +19,13 @@ public class BookController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
+    public String welcome(){
+        return "欢迎～";
+    }
+
+
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @ResponseBody
     public List<Book> getBookList(){
         List<Book> allBooks = bookService.getAllBooks();
         return allBooks;
