@@ -86,10 +86,6 @@ EOF
                     docker build -t seen-app .    
                 '''
                 echo "built docker image [SUCCESS]"
-                echo "starting project"
-                sh '''
-                    docker run --name seen-app -p 8888:8888 -d seen-app
-                '''
             }
         }
         stage("Test"){
@@ -100,6 +96,9 @@ EOF
         stage("Deploy"){
             steps{
                 echo "make publish"
+                sh '''
+                    docker run --name seen-app -p 8888:8888 -d seen-app
+                '''
             }
         }
     }
