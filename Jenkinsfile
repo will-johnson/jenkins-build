@@ -4,6 +4,7 @@ pipeline{
     //定义仓库地址
     environment {
         REPOSITORY="https://github.com/will-johnson/jenkins-build"
+        DOCKERNAME="seen-app"
     }
     stages{
         stage('Clean'){
@@ -32,6 +33,21 @@ pipeline{
         }
         stage('Docker'){
             steps{
+
+                echo "stop docker..."
+                sh '''
+                    echo "the docker name is ${DOCKERNAME}"
+                    docker stop seen-app
+                '''
+                echo "rm docker container..."
+                sh '''
+                    docker rm seen-app
+                '''
+                echo "rmi docker image..."
+                sh '''
+                    docker rmi seen-app
+                '''
+
                 echo "kill port 8888"
                 sh '''
                 port=8888
@@ -41,6 +57,7 @@ pipeline{
                   echo "关闭8888端口服务"
                 fi
                 '''
+
                 echo "generating dockerfile"
                 sh '''
                     pwd
