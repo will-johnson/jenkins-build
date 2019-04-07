@@ -37,15 +37,15 @@ pipeline{
                 echo "stop docker..."
                 sh '''
                     echo "the docker name is ${DOCKERNAME}"
-                    docker stop seen-app
+                    docker stop $(docker ps | awk '$2=="seen-app"{print $2}')
                 '''
                 echo "rm docker container..."
                 sh '''
-                    docker rm seen-app
+                    docker rm $(docker ps -a | awk '$2=="seen-app"{print $2}')
                 '''
                 echo "rmi docker image..."
                 sh '''
-                    docker rmi seen-app
+                    docker rmi $(docker images | awk '$1=="seen-app" {print $1}')
                 '''
 
                 echo "kill port 8888"
