@@ -25,7 +25,7 @@ pipeline{
                 echo "building..."
                 sh '''
                     pwd
-                    mvn clean package -Dmaven.test.skip=true -Pdev
+                    mvn clean package -Dmaven.test.skip=true
                     echo "packaged...
                 '''
             }
