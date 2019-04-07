@@ -27,11 +27,6 @@ pipeline{
                     pwd
                     mvn clean package -Dmaven.test.skip=true -Pdev
                     echo "packaged...
-                    touch dockerfile
-                    
-                    docker build
-                    docker login
-                    docker push
                 '''
             }
         }
@@ -43,9 +38,6 @@ pipeline{
         stage("Deploy"){
             steps{
                 echo "make publish"
-                sh '''
-                    docker run -p...  -d ...
-                '''
             }
         }
     }
