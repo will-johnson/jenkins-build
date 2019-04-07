@@ -35,7 +35,7 @@ pipeline{
                 echo "generating dockerfile"
                 sh '''
                     pwd
-                    cat>seen-app<<EOF
+                    cat>Dockerfile<<EOF
 FROM openjdk:8
 MAINTAINER Will Johnson
 LABEL app="seen-app" version="0.0.1" by="johnson"
