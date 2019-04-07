@@ -36,12 +36,12 @@ pipeline{
                 sh '''
                     pwd
                     cat>seen-app<<EOF
-                    FROM openjdk:8
-                    MAINTAINER Will Johnson
-                    LABEL app="seen-app" version="0.0.1" by="johnson"
-                    COPY ./target/demo-0.0.1-SNAPSHOT.jar seen-app.jar
-                    CMD java -jar seen-app.jar
-                    EOF
+FROM openjdk:8
+MAINTAINER Will Johnson
+LABEL app="seen-app" version="0.0.1" by="johnson"
+COPY ./target/demo-0.0.1-SNAPSHOT.jar seen-app.jar
+CMD java -jar seen-app.jar
+EOF
                 '''
                 echo "building docker image"
                 sh '''
