@@ -26,7 +26,7 @@ pipeline{
                 sh '''
                     pwd
                     mvn clean package -Dmaven.test.skip=true
-                    echo "packaged...
+                    echo "packaged..."
                 '''
             }
         }
