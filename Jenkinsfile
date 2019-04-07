@@ -32,7 +32,7 @@ pipeline{
         }
         stage("Test"){
             steps{
-                echo "make check || true"
+                echo "make test"
             }
         }
         stage("Deploy"){
