@@ -32,6 +32,15 @@ pipeline{
         }
         stage('Docker'){
             steps{
+                echo "kill port 8888"
+                sh '''
+                port=8888
+                echo "停止8888服务中..."
+                if lsof -i:$port;then
+                  kill -9 $(lsof -i:$port -t)
+                  echo "关闭8888端口服务"
+                fi
+                '''
                 echo "generating dockerfile"
                 sh '''
                     pwd
