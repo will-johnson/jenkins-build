@@ -20,7 +20,7 @@ public class BookController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     public String welcome(){
-        return "热烈欢迎～";
+        return "------------热烈欢迎～";
     }
 
 
