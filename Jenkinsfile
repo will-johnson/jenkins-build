@@ -35,22 +35,28 @@ pipeline{
             steps{
 
                 echo "stop docker..."
+                echo "the docker name is ${DOCKERNAME}"
                 sh '''
-                    echo "the docker name is ${DOCKERNAME}"
-                    if docker ps | awk '$2=="seen-app" {print $2}';
-                    then docker stop $(docker ps | awk '$2=="seen-app"{print $2}');
+                    stop_name=`docker ps | awk '$2=="seen-app"{print $2}'`
+                    if [ $stop_name ]
+                    then 
+                        docker stop $stop_name
                     fi
                 '''
                 echo "rm docker container..."
                 sh '''
-                    if docker ps -a | awk '$2=="seen-app" {print $2}';
-                    then docker rm $(docker ps -a | awk '$2=="seen-app"{print $2}');
+                    container_name=`docker ps -a | awk '$2=="seen-app" {print $2}'`
+                    if [ $container_name ]
+                    then 
+                        docker rm $container_name
                     fi
                 '''
                 echo "rmi docker image..."
                 sh '''
-                    if docker images | awk '$1=="seen-app" {print $1}';
-                    then docker rmi $(docker images | awk '$1=="seen-app" {print $1}')
+                    image_name=`docker images | awk '$1=="seen-app" {print $1}'`
+                    if [ $image_name ]
+                    then 
+                        docker rmi $image_name
                     fi
                 '''
 
