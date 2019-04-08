@@ -2,21 +2,21 @@
 DOCKER_NAME="seen-app"
 
 echo "stop docker ${DOCKER_NAME}"
-stop_name=`docker ps | awk '$2=="${DOCKER_NAME}"{print $2}'`
+stop_name=`docker ps | awk '$2=="'${DOCKER_NAME}'"{print $2}'`
 if [ $stop_name ]
 then 
     docker stop $stop_name
 fi
 
 echo "rm docker container..."
-container_name=`docker ps -a | awk '$2=="${DOCKER_NAME}" {print $2}'`
+container_name=`docker ps -a | awk '$2=="'${DOCKER_NAME}'" {print $2}'`
 if [ $container_name ]
 then 
     docker rm $container_name
 fi
 
 echo "rmi docker image..."
-image_name=`docker images | awk '$1=="${DOCKER_NAME}" {print $1}'`
+image_name=`docker images | awk '$1=="'${DOCKER_NAME}'" {print $1}'`
 if [ $image_name ]
 then 
     docker rmi $image_name
