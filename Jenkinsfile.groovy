@@ -10,20 +10,17 @@ pipeline{
         stage('Clean'){
             steps{
                 echo "cleaning directory"
-                //清空当前目录
                 deleteDir()
             }
         }
         stage('Getcode'){
             steps {
                 echo "start fetch code from git:${REPOSITORY}"
-                //拉去代码
                 git "${REPOSITORY}"
             }
         }
         stage('Build'){
             steps{
-                echo "building..."
                 sh '''
                     mvn clean package -Dmaven.test.skip=true
                 '''
