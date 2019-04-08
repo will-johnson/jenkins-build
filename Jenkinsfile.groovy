@@ -32,6 +32,7 @@ pipeline{
         }
         stage('Docker'){
             steps{
+                sh 'chmod 744 docker_process.sh'
                 sh PROJECT_PATH+'/docker_process.sh'
             }
         }
