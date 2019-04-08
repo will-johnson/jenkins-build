@@ -4,7 +4,7 @@ pipeline{
     //定义仓库地址
     environment {
         REPOSITORY="https://github.com/will-johnson/jenkins-build"
-        def PROJECT_PATH="/root/.jenkins/workspace/jenkins-test"
+        def PROJECT_PATH="/root/.jenkins/workspace/pipeline_test"
     }
     stages{
         stage('Clean'){
